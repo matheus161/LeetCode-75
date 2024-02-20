@@ -30,4 +30,11 @@ var gcdOfStrings = function (str1, str2) {
   return "";
 };
 
+var gcdOfStrings2 = function (str1, str2) {
+  if (str1 + str2 !== str2 + str1) return "";
+
+  const gcd = gdcByEuclid(str1.length, str2.length);
+  return str1.substring(0, gcd);
+};
+
 console.log(gcdOfStrings("ABCABC", "ABC"));
