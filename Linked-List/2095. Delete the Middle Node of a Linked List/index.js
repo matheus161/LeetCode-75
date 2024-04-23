@@ -9,19 +9,26 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-function defaultEquals(a, b) {
-  return a === b;
-}
-
-var reverseList = function (head) {
-  let prev = null;
-  let curr = head;
-  let nextNode = null;
-  while (curr !== null) {
-    nextNode = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = nextNode;
+var deleteMiddle = function (head) {
+  if (!head || !head.next) {
+    return null;
   }
-  return prev;
+
+  let curr = head;
+  let count = 0;
+  while (curr != null) {
+    curr = curr.next;
+    count++;
+  }
+
+  let middle = (count - 1) / 2;
+  curr = head;
+  let prev = null;
+  for (let i = 0; i < middle; i++) {
+    prev = curr;
+    curr = curr.next;
+  }
+  prev.next = curr.next;
+
+  return head;
 };
